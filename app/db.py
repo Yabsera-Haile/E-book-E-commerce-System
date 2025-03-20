@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.sql import text
 from sqlalchemy.pool import QueuePool
 
 db = SQLAlchemy()
@@ -18,7 +19,8 @@ def init_db(app):
 
     with app.app_context():
         try:
-            # db.create_all()  # Create tables if they don’t exist
+            db.session.execute(text('SELECT 1'))  # Test the database connection
             print("Database connected successfully.")
         except SQLAlchemyError as e:
             print(f"Database connection error: {e}")
+
