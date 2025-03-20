@@ -1,6 +1,7 @@
 from flask import Flask
-from db import init_db
+from app.db import init_db
 import os
+from app.routes import blueprints  # Import all routes
 
 def create_app():
     app = Flask(__name__)
@@ -11,6 +12,9 @@ def create_app():
 
     # Initialize the database
     init_db(app)
+
+    for blueprint in blueprints:
+        app.register_blueprint(blueprint)
 
     @app.route("/status")
     def home():
