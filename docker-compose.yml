@@ -1,0 +1,12 @@
+
+services:
+  flask-app:
+    build: .
+    container_name: flask_app
+    command: python main.py
+    ports:
+      - "5000:5000"
+    env_file: .env
+    volumes:
+      - ./app:/app
+
