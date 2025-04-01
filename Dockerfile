@@ -1,6 +1,7 @@
 # Use an official Python runtime as a parent image
 FROM python:3.11-slim
 
+LABEL maintainer="Yabsera Yemanberhan"
 # Set the working directory in the container
 WORKDIR /app
 
@@ -14,4 +15,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 5000
 
 # Run the application
-CMD ["python","-m", "app.main.py"]
+CMD ["python","-m", "app.main"]
